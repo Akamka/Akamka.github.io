@@ -1,0 +1,12 @@
+/*Variables.css*/
+:root {
+    --neon-blue: #00f3ff;
+    --dark-bg: #0a0a0a;
+    --text-light: rgba(255,255,255,0.9);
+    --section-padding: 8rem 2rem;
+    --transition-base: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --gradient-neon: linear-gradient(135deg, #00f3ff 0%, #0066ff 100%);
+    --nav-height: 80px;
+    --content-max-width: 1440px;
+    --section-padding: 8rem 2rem;
+}

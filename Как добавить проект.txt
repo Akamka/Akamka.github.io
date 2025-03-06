@@ -1,0 +1,13 @@
+const projects = [
+    {
+        video: './asset/video/project1.mp4',
+        preview: './asset/images/preview1.jpg',
+        title: '3D Анимация для бренда',
+        tools: 'Cinema 4D • Octane • After Effects'
+    },
+    {
+        video: './asset/video/project2.mp4',
+        title: 'UI Анимация',
+        tools: 'After Effects • Lottie • Figma'
+    }
+];

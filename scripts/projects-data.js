@@ -104,7 +104,7 @@ const projects = [
 //long logos
 {
     video: '/asset/video/Long logos.mp4',
-    preview: '/asset/images/Big resolution logos.png',
+    preview: '/asset/images/Big resol logos.png',
     title: 'Brand Animation',
     tools: 'After Effects'
 },

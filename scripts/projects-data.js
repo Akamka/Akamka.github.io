@@ -32,7 +32,6 @@ const projects = [
 //feather logo
 {
     video: './asset/video/feather logo.mp4',
-    preview: '/asset/images/Preview boxing video.png',
     title: 'Brand Animation',
     tools: 'After Effects'
 },

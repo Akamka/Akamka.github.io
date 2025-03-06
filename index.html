@@ -1,162 +1,289 @@
-<!DOCTYPE HTML>
-<!--
-	Hyperspace by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Wander Wave official</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-	</head>
-	<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OverCreate | Professional Motion Design</title>
+    <meta name="description" content="Creating dynamic animations for brands and digital products. Professional motion design with 5 years of experience.">
+    <!--! email  -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-		<!-- Sidebar -->
-			<section id="sidebar">
-				<div class="inner">
-					<nav>
-						<ul>
-							<li><a href="#intro">Welcome</a></li>
-							<li><a href="#one">What bot can do</a></li>
+    <!--! Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-						</ul>
-					</nav>
-				</div>
-			</section>
+    <!--! Styles -->
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    <!--! Critical Resources Preload -->
+    <link rel="preload" href="styles/main.css" as="style">
+    <link rel="preload" href="scripts/app.js" as="script">
+    
+    <!--! Font Preloading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-				<!-- Intro -->
-					<section id="intro" class="wrapper style1 fullscreen fade-up">
-						<div class="inner">
-							<h1>Wonder Wave</h1>
-							<p>link for bot: <a href="http://t.me/WonderWaveBot">WonderWaveBot</a><br />
-                                bot creator: <a href="https://t.me/anime_tian_one_love">Telegram</a>.</p>
-							<ul class="actions">
-								<li><a href="#one" class="button scrolly">Learn more</a></li>
-							</ul>
-						</div>
-					</section>
+    <!--! Navigation -->
+    <nav class="navbar">
+        <a href="#" class="logo">OverCreate</a>
+        <ul class="nav-links">
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="assets/pdf/cv.pdf" download><i class="fas fa-download"></i> CV</a></li>
+        </ul>
+    </nav>
 
-				<!-- One -->
-					<section id="one" class="wrapper style2 spotlights">
-						<section>
-							<a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Moderation</h2>
-									<p>Основные правилаа модерации, и не только</p>
-									
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Entertainment</h2>
-									<p>Развлекательные елементы бота</p>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="#" class="image"><img src="images/pic03.jpg" alt="" data-position="25% 25%" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>polls</h2>
-									<p>Возможность создания голосования на сервере</p>
-								</div>
-							</div>
-						</section>
-					</section>
+    <!--! Hero Section -->
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop>
+            <source src="assets/videos/showreel.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1 class="floating">Transform Ideas<br>Into Motion</h1>
+            <div class="cta-buttons">
+                <a href="#portfolio" class="btn">View Work</a>
+                <a href="#contact" class="btn">Discuss Project</a>
+            </div>
+        </div>
+    </section>
 
-				
-                    <section id="one" class="wrapper style2 spotlights">
-						<section>
-							<a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h1>Comands</h1>
-                                    <h2>Moderation</h2>
-                                    <li>/kick [username] - исключить пользователя.</li>
-                                    <li>/ban [username] - заблокировать пользователя.</li>
-                                    <li>/unban [username] - разблокировать пользователя.</li>
-                                    <li>/mute [username] - замутить пользователя.</li>
-                                    <li>/unmute [username] - размутить пользователя.</li>
-                                    <li>/warn [username] [reason] - предупредить пользователя за нарушение правил.</li>
-                                    <li>/rules - отобразить правила.</li>
-                                    <li>/admins - отобразить список администраторов.</li>
-                                    <li>/promote [username] - назначить пользователя администратором.</li>
-                                    <li>/demote [username] - удалить пользователя из списка администраторов группы.</li>
-                                    <h2>Entertainment</h2>
-                                    <li>/mem - рандомный мем</li>
-                                    <li>/art</li>
-                                    <li>/hello [username] - поздороватся c участником</li>
-                                    <li>Bye [username] - попрощатся c участником</li>
-                                    <li>hug [username] - обнять участника</li>
-                                    <li>kiss [username] - поцеловать участника</li>
-                                    <li>congratulate [username] - поздравить участника </li>
+    <!--! Portfolio -->
+    <section id="portfolio" class="portfolio">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <video class="portfolio-preview" 
+                    muted 
+                    loop 
+                    playsinline 
+                    data-src="./asset/video/project1.mp4"
+                    preload="none">
+                    <source type="video/mp4">
+                </video>
+                <div class="portfolio-info">
+                    <h3>3D Brand Animation</h3>
+                    <p>Cinema 4D • Octane • After Effects</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                                    <h2>Polls</h2>
-                                    <li>/poll - создание голосования</li>
-                                    
-                                    
+    <!--! Process -->
+    <section id="process" class="process">
+        <h2 class="section-title">Our Workflow</h2>
+        <div class="process-timeline">
+            <div class="process-card">
+                <div class="card-number">01</div>
+                <i class="fas fa-comment-dots card-icon"></i>
+                <h3>Project Consultation</h3>
+                <p>Analyze your goals, target audience and establish technical requirements</p>
+            </div>
 
-								</div>
-							</div>
-						</section>
-					</section>
+            <div class="process-card">
+                <div class="card-number">02</div>
+                <i class="fas fa-palette card-icon"></i>
+                <h3>Concept Development</h3>
+                <p>Create visual concepts, select styles and finalize with your approval</p>
+            </div>
+
+            <div class="process-card">
+                <div class="card-number">03</div>
+                <i class="fas fa-cube card-icon"></i>
+                <h3>Production Phase</h3>
+                <p>Develop animations following approved plans with regular updates</p>
+            </div>
+
+            <div class="process-card">
+                <div class="card-number">04</div>
+                <i class="fas fa-rocket card-icon"></i>
+                <h3>Final Delivery</h3>
+                <p>Implement final adjustments and integrate into your product</p>
+            </div>
+        </div>
+    </section>
+
+        <!--! Коментарии (testimonials)-->
+
+<section class="testimonials">
+    <h2 class="section-title">Client Reviews</h2>
+    <div class="testimonials-container">
+        <div class="testimonials-track">
+            <!-- Основной набор карточек -->
+            <div class="testimonial-card">
+                <div class="rating">★★★★★</div>
+                <p class="comment">"Absolutely stunning work! The attention to detail and creativity exceeded all our expectations."</p>
+                <span class="client-name">- Sarah Johnson</span>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">★★★★☆</div>
+                <p class="comment">"Professional and reliable. Delivered high-quality animations exactly when promised."</p>
+                <span class="client-name">- Mark Thompson</span>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">★★★★★</div>
+                <p class="comment">"Transformed our brand identity completely. The animations brought our product to life!"</p>
+                <span class="client-name">- Emily Chen</span>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">★★★★★</div>
+                <p class="comment">"The team's ability to translate complex ideas into smooth animations is remarkable."</p>
+                <span class="client-name">- Alex Martinez</span>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">★★★★★</div>
+                <p class="comment">"Quick turnaround time without compromising quality. Will definitely work with them again!"</p>
+                <span class="client-name">- Jessica Brown</span>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">★★★★☆</div>
+                <p class="comment">"Impressed with the creative solutions provided for our technical constraints."</p>
+                <span class="client-name">- Michael Davis</span>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">★★★★★</div>
+                <p class="comment">"Their motion design added tremendous value to our user onboarding experience."</p>
+                <span class="client-name">- Sophia Wilson</span>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">★★★★★</div>
+                <p class="comment">"Perfect balance between artistic vision and technical execution."</p>
+                <span class="client-name">- Daniel Taylor</span>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">★★★★☆</div>
+                <p class="comment">"Consistently delivers beyond expectations. A true partner in our projects."</p>
+                <span class="client-name">- Olivia Anderson</span>
+            </div>
+
+            <!--! Дублированные карточки для бесшовной анимации -->
+            <div class="testimonial-card">
+                <div class="rating">★★★★★</div>
+                <p class="comment">"Absolutely stunning work! The attention to detail and creativity exceeded all our expectations."</p>
+                <span class="client-name">- Sarah Johnson</span>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">★★★★☆</div>
+                <p class="comment">"Professional and reliable. Delivered high-quality animations exactly when promised."</p>
+                <span class="client-name">- Mark Thompson</span>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">★★★★★</div>
+                <p class="comment">"Transformed our brand identity completely. The animations brought our product to life!"</p>
+                <span class="client-name">- Emily Chen</span>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">★★★★★</div>
+                <p class="comment">"The team's ability to translate complex ideas into smooth animations is remarkable."</p>
+                <span class="client-name">- Alex Martinez</span>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">★★★★★</div>
+                <p class="comment">"Quick turnaround time without compromising quality. Will definitely work with them again!"</p>
+                <span class="client-name">- Jessica Brown</span>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">★★★★☆</div>
+                <p class="comment">"Impressed with the creative solutions provided for our technical constraints."</p>
+                <span class="client-name">- Michael Davis</span>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">★★★★★</div>
+                <p class="comment">"Their motion design added tremendous value to our user onboarding experience."</p>
+                <span class="client-name">- Sophia Wilson</span>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">★★★★★</div>
+                <p class="comment">"Perfect balance between artistic vision and technical execution."</p>
+                <span class="client-name">- Daniel Taylor</span>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">★★★★☆</div>
+                <p class="comment">"Consistently delivers beyond expectations. A true partner in our projects."</p>
+                <span class="client-name">- Olivia Anderson</span>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    <!--! Contact -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Get in Touch</h2>
+        <form class="contact-form" id="contactForm">
+            <input type="text" name="name" placeholder="Name / Company" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="text" name="contact" 
+                   placeholder="Telegram / WhatsApp" 
+                   required>
+            <textarea name="message" rows="5" 
+                      placeholder="Describe Your Project" 
+                      minlength="30"
+                      required></textarea>
+            
+            <button type="submit" class="btn">Send Message</button>
+
+            <div class="form-status success-message" style="display:none">
+                ✔ Message sent successfully!
+            </div>
+            <div class="form-status error-message" style="display:none">
+                ⚠ Error sending message. Please try again.
+            </div>
+        </form>
+    </section>
 
 
+    <!--! Modal -->
+    <div class="modal">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <video class="modal-video" controls playsinline>
+                <source type="video/mp4">
+            </video>
+            <div class="loading">Loading...</div>
+        </div>
+    </div>
 
+    <script src="scripts/projects-data.js"></script>
+    <script src="scripts/app.js"></script>
 
+    <script src="scripts/app.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
-
-	</body>
+    <!--! Preloader -->
+        <div class="preloader">
+        <div class="loader"></div>
+    </div>
+    <p class="license-container">
+        This work is licensed under 
+        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" 
+        target="_blank" 
+        rel="license noopener noreferrer" 
+        class="license-link">
+            CC BY-NC-ND 4.0
+            <img class="license-icon" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt="CC">
+            <img class="license-icon" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt="BY">
+            <img class="license-icon" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt="NC">
+            <img class="license-icon" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt="ND">
+        </a>
+    </p>
+</body>
 </html>

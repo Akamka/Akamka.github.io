@@ -118,7 +118,7 @@ class PortfolioManager {
                 `<div class="media-wrapper">
                     <img class="portfolio-preview" 
                          src="${project.preview}" 
-                         alt="${project.title}"
+
                          loading="lazy"
                          data-src="${project.video}">
                     <video class="preload-video" 
@@ -136,9 +136,6 @@ class PortfolioManager {
             item.innerHTML = `
                 ${mediaContent}
                 <div class="portfolio-info">
-                    <h3>${project.title}</h3>
-                    <p>${project.tools}</p>
-                </div>
             `;
             
             this.grid.appendChild(item);

@@ -22,6 +22,16 @@
 
 const projects = [
 
+
+//glitch Alliance
+
+{
+    video: '/asset/video/Alliance logo animation.mp4',
+    preview: '/asset/images/Alliance.png',
+    title: 'Brand Animation',
+    tools: 'After Effects'
+},
+
 //Kitsune looped
 {
     video: '/asset/video/Kitsune looped.mp4',
@@ -54,6 +64,14 @@ const projects = [
 //Blood text
 {
     video: './asset/video/blood text.mp4',
+    title: 'Brand Animation',
+    tools: 'After Effects'
+},
+
+// holistic 3d
+{
+    video: '/asset/video/3d holistic.mp4',
+    preview: '/asset/images/holistic.png',
     title: 'Brand Animation',
     tools: 'After Effects'
 },

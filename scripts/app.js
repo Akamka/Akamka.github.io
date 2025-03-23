@@ -1,4 +1,6 @@
-// Параллакс эффект для фонового видео
+
+
+//! Параллакс эффект для фонового видео
 let isScrolling = false;
 
 window.addEventListener('scroll', () => {
@@ -17,7 +19,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Система ленивой загрузки медиа
+//! Система ленивой загрузки медиа
 class VideoLoader {
     constructor() {
         this.videos = [];
@@ -55,7 +57,7 @@ class VideoLoader {
 
 
 
-// В класс PortfolioManager
+//! В класс PortfolioManager
 class ScrollAnimator {
     constructor() {
         this.observer = new IntersectionObserver(this.handleIntersect, {
@@ -81,7 +83,7 @@ class ScrollAnimator {
 
 
 
-// Инициализация в DOMContentLoaded
+//! Инициализация в DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
     // ... остальной код ...
     new ScrollAnimator().init();
@@ -89,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// Управление портфолио и модальным окном
+// !Управление портфолио и модальным окном
 class PortfolioManager {
     constructor() {
         this.grid = document.querySelector('.portfolio-grid');
@@ -212,7 +214,7 @@ class PortfolioManager {
             muteBtn.innerHTML = this.modalVideo.muted ? '🔇' : '🔊';
         });
 
-        // Добавляем элементы в DOM
+        //! Добавляем элементы в DOM
         controlsContainer.appendChild(playPauseBtn);
         controlsContainer.appendChild(muteBtn);
         this.modalContent.appendChild(controlsContainer);
@@ -224,7 +226,7 @@ class PortfolioManager {
         this.modalVideo.currentTime = 0;
         document.body.style.overflow = '';
         
-        // Удаляем кастомные элементы управления
+        //! Удаляем кастомные элементы управления
         const controls = this.modal.querySelector('.video-controls');
         if (controls) controls.remove();
     }
@@ -297,7 +299,7 @@ class PortfolioManager {
     }
 }
 
-// Инициализация приложения
+//! Инициализация приложения
 document.addEventListener('DOMContentLoaded', () => {
     const preloader = document.querySelector('.preloader');
     
@@ -317,10 +319,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     });
 
-    // Остальная инициализация...
-    
-    
-    // Плавная прокрутка
+
+    //! Плавная прокрутка
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -424,3 +424,5 @@ class FormHandler {
 window.addEventListener('DOMContentLoaded', () => {
     new FormHandler().init();
 });
+
+

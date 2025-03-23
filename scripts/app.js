@@ -300,6 +300,7 @@ class PortfolioManager {
 document.addEventListener('DOMContentLoaded', () => {
     const preloader = document.querySelector('.preloader');
     
+    
     const portfolioManager = new PortfolioManager();
     portfolioManager.init();
 
@@ -330,7 +331,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    new ThemeManager();
 });
 
 
@@ -344,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-//Форма для отправки
+//!Форма для отправки
 // Инициализация EmailJS (замените значения на свои)
 //Форма для отправки
 emailjs.init('fmY8Hg46PZYlVKj4C');
@@ -423,3 +423,79 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+
+
+//! Cursor
+document.addEventListener('DOMContentLoaded', () => {
+    const cursor = document.createElement('div');
+    cursor.className = 'cursor-trail';
+    
+    // Создаем основную точку
+    const dot = document.createElement('div');
+    dot.className = 'cursor-dot';
+    cursor.appendChild(dot);
+    document.body.appendChild(cursor);
+
+    let mouseX = 0, mouseY = 0;
+    let posX = 0, posY = 0;
+    const particles = [];
+    const particleCount = 15;
+
+    // Создание частиц
+    function createParticle(x, y) {
+        const particle = document.createElement('div');
+        particle.className = 'trail-particle';
+        
+        // Случайное смещение
+        const angle = Math.atan2(y - posY, x - posX);
+        const variance = Math.PI / 8;
+        const randomAngle = angle + (Math.random() * variance - variance/2);
+        const distance = 15 + Math.random() * 20;
+        
+        particle.style.setProperty('--tx', `${Math.cos(randomAngle) * distance}px`);
+        particle.style.setProperty('--ty', `${Math.sin(randomAngle) * distance}px`);
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+        
+        document.body.appendChild(particle);
+        particles.push(particle);
+
+        // Автоудаление частиц
+        setTimeout(() => {
+            particle.remove();
+            particles.splice(particles.indexOf(particle), 1);
+        }, 800);
+    }
+
+    // Обновление позиции
+    function updateCursor() {
+        const deltaX = mouseX - posX;
+        const deltaY = mouseY - posY;
+        
+        // Плавное движение
+        posX += deltaX * 0.2;
+        posY += deltaY * 0.2;
+        
+        cursor.style.transform = `translate(${posX}px, ${posY}px)`;
+        
+        // Создаем частицы постоянно при движении
+        if (Math.abs(deltaX) > 0.1 || Math.abs(deltaY) > 0.1) {
+            createParticle(posX, posY);
+        }
+
+        requestAnimationFrame(updateCursor);
+    }
+
+    // Слежение за мышью
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    // Скрытие/показ
+    document.addEventListener('mouseleave', () => cursor.style.opacity = '0');
+    document.addEventListener('mouseenter', () => cursor.style.opacity = '1');
+
+    updateCursor();
+});

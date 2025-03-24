@@ -344,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-//!Форма для отправки
+//! Форма для отправки
 // Инициализация EmailJS (замените значения на свои)
 //Форма для отправки
 emailjs.init('fmY8Hg46PZYlVKj4C');

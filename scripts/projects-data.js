@@ -23,6 +23,14 @@
 const projects = [
 
 
+// start stream
+    {
+        video: '/asset/video/Stream start.mp4',
+        preview: '/asset/images/Stream start preview.png',
+        title: 'Brand Animation',
+        tools: 'After Effects'
+    },
+
 //glitch Alliance
 
 {

@@ -164,6 +164,160 @@ const projects = [
 
 
 
+
+/**
+ * ! Graphic design
+ * 
+    preview: '/asset/images/LogoProject.png',
+    category: 'Graphic design',
+    gallery: [
+        '/asset/images/LogoProject-1.jpg',
+        '/asset/images/LogoProject-2.jpg',
+        '/asset/images/LogoProject-3.jpg'
+    ]
+    },
+**/
+
+
+    { 
+    // Новый Graphic design проект — вместо видео у него галерея
+    preview: '/asset/images/Logos/Boonia mockup car 1.png',
+    category: 'Graphic design',
+    gallery: [
+        '/asset/images/Logos/Boonia mockup car 2.png',
+        '/asset/images/Logos/Boonia mockup car 1.png',
+        '/asset/images/Logos/Boonia logo 1.png',
+        '/asset/images/Logos/Boonia logo 2.png',
+        '/asset/images/Logos/Boonia logo 3.png',
+        '/asset/images/Logos/Boonia logo 4.png',
+        '/asset/images/Logos/Boonia logo 5.png',
+        '/asset/images/Logos/Boonia logo 6.png',
+    ]
+    },
+
+        {
+    preview: '/asset/images/Logos/bird logo mockup .png',
+    category: 'Graphic design',
+    gallery: [
+        '/asset/images/Logos/bird logo mockup .png',
+        '/asset/images/Logos/bird logo white.png',
+        '/asset/images/Logos/bird logo.png',
+    ]
+    },
+
+    {
+    preview: '/asset/images/Logos/Overcreate preview.png',
+    category: 'Graphic design',
+    gallery: [
+        '/asset/images/Logos/Overcreate logo 1.png',
+        '/asset/images/Logos/Overcreate logo 2.png',
+        '/asset/images/Logos/Overcreate logo 3.png',
+        '/asset/images/Logos/Overcreate logo 4.png',
+        '/asset/images/Logos/Overcreate logo 5.png',
+        '/asset/images/Logos/Overcreate logo 6.png',
+        '/asset/images/Logos/Overcreate logo 7.png',
+        '/asset/images/Logos/Overcreate logo 8.png',
+        '/asset/images/Logos/Overcreate logo 9.png',
+        '/asset/images/Logos/Overcreate logo 10.png',
+    ]
+    },
+
+    {
+    preview: '/asset/images/Logos/KPS Swidnica.png',
+    category: 'Graphic design',
+    gallery: [
+        '/asset/images/Logos/KPS Swidnica.png',
+        '/asset/images/Logos/KPS T-shirt.png',
+        '/asset/images/Logos/KPS bottle.png',
+    ]
+    },
+
+{
+    preview: '/asset/images/Logos/Famous preview.png',
+    category: 'Graphic design',
+    gallery: [
+        '/asset/images/Logos/famous logo main.png',
+        '/asset/images/Logos/famous logo 2.png',
+        '/asset/images/Logos/famous logo 3.png',
+        '/asset/images/Logos/famous logo 4.png',
+    ]
+    },
+
+        {
+    preview: '/asset/images/Logos/Coffee Cozy.png',
+    category: 'Graphic design',
+    gallery: [
+        '/asset/images/Logos/Coffee Cozy.png',
+    ]
+    },
+
+    {
+    preview: '/asset/images/Logos/Dragon preview.png',
+    category: 'Graphic design',
+    gallery: [
+        '/asset/images/Logos/Dragon 2.jpg',
+        '/asset/images/Logos/Dragon 1.jpg',
+    ]
+    },
+
+    {
+    preview: '/asset/images/Logos/penguin logo.png',
+    category: 'Graphic design',
+    gallery: [
+        '/asset/images/Logos/penguin logo.png',
+    ]
+    },
+
+    {
+    preview: '/asset/images/Logos/Suricken.png',
+    category: 'Graphic design',
+    gallery: [
+        '/asset/images/Logos/Suricken.png',
+    ]
+    },
+
+    {
+    preview: '/asset/images/Logos/word logo.png',
+    category: 'Graphic design',
+    gallery: [
+        '/asset/images/Logos/word logo.png',
+    ]
+    },
+
+
+        {
+    preview: '/asset/images/Logos/Envionment.png',
+    category: 'Graphic design',
+    gallery: [
+        '/asset/images/Logos/Envionment.png',
+    ]
+    },
+
+    {
+    preview: '/asset/images/Logos/Inomodern.png',
+    category: 'Graphic design',
+    gallery: [
+        '/asset/images/Logos/Inomodern.png',
+    ]
+    },
+
+        {
+    preview: '/asset/images/Logos/Swift Cargo.png',
+    category: 'Graphic design',
+    gallery: [
+        '/asset/images/Logos/Swift Cargo.png',
+    ]
+    },
+
+            {
+    preview: '/asset/images/Logos/Joga logo .png',
+    category: 'Graphic design',
+    gallery: [
+        '/asset/images/Logos/Joga logo .png',
+    ]
+    },
+
+
 ];
 
 

@@ -1,99 +1,160 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>OverCreate | Portfolio</title>
-  <link rel="stylesheet" href="styles/variables.css">
-  <link rel="stylesheet" href="styles/main.css">
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-</head>
-<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>OverCreate | Portfolio</title>
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-pZ...фрагмент...=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    </head>
+    <body>
 
-  <!-- Навигация -->
-  <nav class="navbar">
-    <a href="#" class="logo">OverCreate</a>
-    <ul class="nav-links">
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="/asset/images/Main CV.pdf" download><i class="fas fa-download"></i> CV</a></li>
-    </ul>
-    <button class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
-  </nav>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <a href="#" class="logo">OverCreate</a>
+        <ul class="nav-links">
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="/asset/images/Main CV.pdf" download><i class="fas fa-download"></i> CV</a></li>
+        </ul>
+        <button class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+    </nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <video class="hero-video" src="assets/videos/showreel.mp4" autoplay muted loop playsinline></video>
-    <div class="hero-content">
-      <h1 class="floating">Transform Ideas<br>Into Motion</h1>
-      <div class="cta-buttons">
-        <a href="#portfolio" class="btn">View Work</a>
-        <a href="#contact" class="btn">Discuss Project</a>
-      </div>
+    <!-- Hero -->
+    <section class="hero">
+        <video class="hero-video" src=".........." autoplay muted loop playsinline></video>
+        <div class="hero-content">
+        <h1 class="floating">Transform Ideas<br>Into Motion</h1>
+        <div class="cta-buttons">
+            <a href="#portfolio" class="btn">View Work</a>
+            <a href="#contact" class="btn">Discuss Project</a>
+        </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="portfolio">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="filters">
+        <button class="filter-btn" data-category="Motion design"><span>Motion design</span></button>
+        <button class="filter-btn" data-category="Graphic design"><span>Graphic design</span></button>
+        </div>
+        <div class="portfolio-grid"></div>
+        <div class="pagination"></div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="process">
+        <h2 class="section-title">Our Workflow</h2>
+        <div class="process-timeline">
+        <div class="process-card"><div class="card-number">01</div><i class="fas fa-comment-dots card-icon"></i><h3>Project Consultation</h3><p>We discuss your objectives, audience, and technical needs to set a clear direction.</p></div>
+        <div class="process-card"><div class="card-number">02</div><i class="fas fa-palette card-icon"></i><h3>Concept Development</h3><p>We craft idea and style, refining visuals until you’re fully satisfied.</p></div>
+        <div class="process-card"><div class="card-number">03</div><i class="fas fa-cube card-icon"></i><h3>Production Phase</h3><p>We bring your concept to life with 2D/3D animation, VFX and sound design.</p></div>
+        <div class="process-card"><div class="card-number">04</div><i class="fas fa-rocket card-icon"></i><h3>Final Delivery</h3><p>We implement final tweaks, optimize all assets, and hand over ready-to-use files.</p></div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Get in Touch</h2>
+        <form id="contactForm" class="contact-form">
+        <input type="text" name="name" placeholder="Name / Company" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="text" name="contact" placeholder="Telegram / WhatsApp" required>
+        <textarea name="message" rows="5" placeholder="Describe Your Project" minlength="15" required></textarea>
+        <button type="submit" class="btn">Отправить</button>
+        <div class="form-status success-message" style="display:none">✔ Message sent successfully!</div>
+        <div class="form-status error-message" style="display:none">⚠ Error sending message.</div>
+        </form>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal">
+        <div class="modal-content">
+        <button class="close-btn">&times;</button>
+        <video class="modal-video" playsinline></video>
+        <div class="loading">Loading...</div>
+        </div>
     </div>
-  </section>
 
-  <!-- Portfolio -->
-  <section id="portfolio" class="portfolio">
-    <h2 class="section-title">Featured Projects</h2>
-    <div class="filters">
-      <button class="filter-btn" data-category="Motion design"><span>Motion design</span></button>
-      <button class="filter-btn" data-category="Graphic design"><span>Graphic design</span></button>
+    <!-- Preloader -->
+
+<div class="preloader">
+  <svg class="loader-ring" viewBox="0 0 100 100">
+    <circle class="ring-bg" cx="50" cy="50" r="45"></circle>
+    <circle class="ring"   cx="50" cy="50" r="45"></circle>
+  </svg>
+  <div class="loader-text">Loading...</div>
+</div>
+
+
+
+
+    <!--! Footer -->
+    <footer class="site-footer">
+    <div class="footer-main">
+        <div class="footer-brand">
+        <a href="#" class="logo">OverCreate</a>
+        <p class="tagline">Animation & Motion Design</p>
+        </div>
+
+        <div class="footer-contacts">
+        <h4 class="footer-heading">Contact</h4>
+        <a href="mailto:bashinskiy05work@gmail.com" class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>bashinskiy05work@gmail.com</span>
+        </a>
+        <a href="tel:+380969901003" class="contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>+380 969 901 003</span>
+        </a>
+        <a href="tel:+48575933658" class="contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>+48 575 933 658</span>
+        </a>
+        </div>
+
+        <div class="footer-social">
+        <h4 class="footer-heading">Follow</h4>
+        <a href="https://t.me/Akamka_02" class="social-icon" aria-label="telegram">
+            <i class="fab fa-telegram"></i>
+        </a>
+        <a href="#" class="social-icon" aria-label="instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+                <a href="#" class="social-icon" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+        </a>
+        </div>
     </div>
-    <div class="portfolio-grid"></div>
-  </section>
 
-  <!-- Process -->
-  <section id="process" class="process">
-    <h2 class="section-title">Our Workflow</h2>
-    <div class="process-timeline">
-      <div class="process-card"><div class="card-number">01</div><i class="fas fa-comment-dots card-icon"></i><h3>Project Consultation</h3><p>Analyze your goals…</p></div>
-      <div class="process-card"><div class="card-number">02</div><i class="fas fa-palette card-icon"></i><h3>Concept Development</h3><p>Create visual concepts…</p></div>
-      <div class="process-card"><div class="card-number">03</div><i class="fas fa-cube card-icon"></i><h3>Production Phase</h3><p>Develop animations…</p></div>
-      <div class="process-card"><div class="card-number">04</div><i class="fas fa-rocket card-icon"></i><h3>Final Delivery</h3><p>Implement final adjustments…</p></div>
+    <div class="footer-legal">
+        <p>© 2023 OverCreate.  
+        <a
+            href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
+            class="license-link"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            CC BY-NC-ND 4.0
+        </a>
+        </p>
     </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="contact">
-    <h2 class="section-title">Get in Touch</h2>
-    <form id="contactForm" class="contact-form">
-      <input type="text" name="name" placeholder="Name / Company" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <input type="text" name="contact" placeholder="Telegram / WhatsApp" required>
-      <textarea name="message" rows="5" placeholder="Describe Your Project" minlength="30" required></textarea>
-      <button type="submit" class="btn">Отправить</button>
-      <div class="form-status success-message" style="display:none">✔ Message sent successfully!</div>
-      <div class="form-status error-message" style="display:none">⚠ Error sending message.</div>
-    </form>
-  </section>
-
-  <!-- Modal -->
-  <div class="modal">
-    <div class="modal-content">
-      <button class="close-btn">&times;</button>
-      <video class="modal-video" playsinline></video>
-      <div class="loading">Loading...</div>
-    </div>
-  </div>
-
-  <!-- Preloader -->
-  <div class="preloader">
-    <div class="preloader__container">
-      <div class="particle-ring">
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
-      </div>
-      <svg class="logo-loader" viewBox="0 0 200 50">
-        <path class="logo-path" d="M20,25 L40,5 … 180,25" stroke="#00f3ff" fill="none" stroke-width="2"/>
-        <text class="logo-text" x="50%" y="40" text-anchor="middle">OverCreate</text>
-      </svg>
-    </div>
-  </div>
+    </footer>
 
 
-  <!-- Скрипты как модули -->
-  <script type="module" src="scripts/projects-data.js"></script>
-  <script type="module" src="scripts/app.js"></script>
-</body>
-</html>
+
+    <!-- Скрипты как модули -->
+    <script type="module" src="scripts/projects-data.js"></script>
+    <script type="module" src="scripts/app.js"></script>
+    </body>
+    </html>

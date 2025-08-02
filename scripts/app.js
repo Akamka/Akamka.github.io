@@ -25,7 +25,9 @@ class VideoLoader {
     this.total = 0;
     this.targetPercent = 0;
     this.currentPercent = 0;
+    this.startTime = null;
     this.progressEl = document.getElementById('loader-percent');
+    this.etaEl = document.getElementById('loader-eta');
   }
 
   preloadAllVideos() {
@@ -38,6 +40,7 @@ class VideoLoader {
         return resolve();
       }
 
+      this.startTime = performance.now();
       this.animatePercent();
 
       els.forEach(v => {
@@ -50,9 +53,11 @@ class VideoLoader {
           v.removeAttribute('data-src');
           this.loadedCount++;
           this.updateTarget();
+          this.updateETA();
 
           if (this.loadedCount === this.total) {
             this.setPercent(100);
+            this.updateETA(true);
             resolve();
           }
         };
@@ -82,12 +87,27 @@ class VideoLoader {
     step();
   }
 
+  updateETA(finished = false) {
+    if (finished) {
+      this.etaEl.textContent = '✓ done';
+      return;
+    }
+
+    const elapsed = (performance.now() - this.startTime) / 1000;
+    const avgPerItem = elapsed / this.loadedCount;
+    const remaining = Math.max(0, (this.total - this.loadedCount) * avgPerItem);
+    const rounded = Math.ceil(remaining);
+
+    this.etaEl.textContent = `— ~${rounded}s remaining`;
+  }
+
   setPercent(value) {
     this.currentPercent = value;
     this.targetPercent = value;
     this.progressEl.textContent = `${value}%`;
   }
 }
+
 
 
 

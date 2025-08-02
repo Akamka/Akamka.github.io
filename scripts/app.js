@@ -20,24 +20,76 @@ window.addEventListener('scroll', () => {
 
 //! Ленивая предзагрузка видео
 class VideoLoader {
-  constructor() { this.loadedCount = 0; }
+  constructor() {
+    this.loadedCount = 0;
+    this.total = 0;
+    this.targetPercent = 0;
+    this.currentPercent = 0;
+    this.progressEl = document.getElementById('loader-percent');
+  }
+
   preloadAllVideos() {
     return new Promise(resolve => {
       const els = Array.from(document.querySelectorAll('video[data-src]'));
-      if (!els.length) return resolve();
+      this.total = els.length;
+
+      if (!this.total) {
+        this.setPercent(100);
+        return resolve();
+      }
+
+      this.animatePercent();
+
       els.forEach(v => {
         const tmp = document.createElement('video');
         tmp.src = v.dataset.src;
         tmp.preload = 'auto';
-        tmp.addEventListener('loadeddata', () => {
+
+        const onLoad = () => {
           v.src = v.dataset.src;
           v.removeAttribute('data-src');
-          if (++this.loadedCount === els.length) resolve();
-        });
+          this.loadedCount++;
+          this.updateTarget();
+
+          if (this.loadedCount === this.total) {
+            this.setPercent(100);
+            resolve();
+          }
+        };
+
+        tmp.addEventListener('loadeddata', onLoad);
+        tmp.addEventListener('error', onLoad);
       });
     });
   }
+
+  updateTarget() {
+    this.targetPercent = Math.floor((this.loadedCount / this.total) * 100);
+  }
+
+  animatePercent() {
+    const step = () => {
+      if (this.currentPercent < this.targetPercent) {
+        this.currentPercent += 1;
+        this.progressEl.textContent = `${this.currentPercent}%`;
+      }
+
+      if (this.currentPercent < 100) {
+        requestAnimationFrame(step);
+      }
+    };
+
+    step();
+  }
+
+  setPercent(value) {
+    this.currentPercent = value;
+    this.targetPercent = value;
+    this.progressEl.textContent = `${value}%`;
+  }
 }
+
+
 
 //! Анимация process-карточек
 class ScrollAnimator {
@@ -91,7 +143,7 @@ class PortfolioManager {
     });
   }
 
-    render() {
+  render() {
     const filtered = this.projects.filter(p => p.category === this.currentCategory);
     const totalPages = Math.ceil(filtered.length / this.perPage);
     const start = (this.currentPage - 1) * this.perPage;
@@ -99,16 +151,16 @@ class PortfolioManager {
 
     this.grid.innerHTML = '';
     pageItems.forEach(p => {
-        const origIdx = this.projects.indexOf(p);    // <-- здесь
-        const item = document.createElement('div');
-        item.className = 'portfolio-item';
-        item.dataset.index = origIdx;                 // <-- и здесь
+      const origIdx = this.projects.indexOf(p);
+      const item = document.createElement('div');
+      item.className = 'portfolio-item';
+      item.dataset.index = origIdx;
 
       let mediaHTML;
       if (Array.isArray(p.gallery)) {
         mediaHTML = `
           <div class="media-wrapper gallery-preview">
-            <img src="${p.preview}" class="portfolio-preview" />
+            <img src="${p.preview}" class="portfolio-preview" alt="${p.title || 'Project preview'}" />
             <span class="gallery-icon">🖼️</span>
           </div>`;
       } else if (p.preview) {
@@ -117,7 +169,8 @@ class PortfolioManager {
             <img class="portfolio-preview"
                  src="${p.preview}"
                  loading="lazy"
-                 data-src="${p.video}">
+                 data-src="${p.video}"
+                 alt="${p.title || 'Project preview'}" />
             <video class="preload-video"
                    data-src="${p.video}"
                    style="display:none;"></video>
@@ -194,75 +247,73 @@ class PortfolioManager {
     });
   }
 
-async openModal(item) {
-  const idx = +item.dataset.index;
-  const p = this.projects[idx];
+  async openModal(item) {
+    const idx = +item.dataset.index;
+    const p = this.projects[idx];
 
-  // Сбросим все
-  this.modalContent.innerHTML = '';
-  this.modalContent.classList.remove('gallery-mode');    // убираем, если было
-  this.modalContent.classList.remove('video-mode');
+    this.modalContent.classList.remove('gallery-mode', 'video-mode');
+    this.modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
 
-  this.modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
+    this.modalVideo.pause();
+    this.modalVideo.removeAttribute('src');
+    this.modalVideo.classList.remove('loaded');
+    this.modalVideo.load();
 
-  // Кнопка закрыть
-  const closeBtn = document.createElement('button');
-  closeBtn.className = 'close-btn';
-  closeBtn.innerHTML = '&times;';
-  closeBtn.addEventListener('click', () => this.closeModal());
-  this.modalContent.append(closeBtn);
+    const isGallery = Array.isArray(p.gallery);
+    this.modalVideo.style.display = isGallery ? 'none' : 'block';
 
-  if (Array.isArray(p.gallery)) {
-    // Галерея
-    this.modalContent.classList.add('gallery-mode');
-
-    const galleryContainer = document.createElement('div');
-    galleryContainer.className = 'gallery-container';
-
-    p.gallery.forEach(src => {
-      const img = document.createElement('img');
-      img.src = src;
-      img.className = 'gallery-image';
-      galleryContainer.append(img);
+    // Удалим старые галереи
+    [...this.modalContent.children].forEach(child => {
+      if (!child.classList.contains('close-btn') &&
+          child !== this.modalVideo &&
+          !child.classList.contains('loading')) {
+        child.remove();
+      }
     });
 
-    this.modalContent.append(galleryContainer);
-    return;
+    if (isGallery) {
+      this.modalContent.classList.add('gallery-mode');
+      const galleryContainer = document.createElement('div');
+      galleryContainer.className = 'gallery-container';
+
+      p.gallery.forEach((src, i) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.loading = 'lazy';
+        img.alt = `Gallery image ${i + 1} — ${p.title || 'Project'}`;
+        img.className = 'gallery-image';
+        galleryContainer.append(img);
+      });
+
+      this.modalContent.insertBefore(galleryContainer, this.modalVideo);
+      return;
+    }
+
+    // Видео
+    this.modalContent.classList.add('video-mode');
+    this.showLoading();
+    this.modalVideo.src = p.video;
+
+    try {
+      await this.modalVideo.play();
+      this.modalVideo.controls = true;
+      this.modalVideo.muted = false;
+      this.modalVideo.classList.add('loaded');
+    } catch {
+      this.modalVideo.controls = true;
+    } finally {
+      this.hideLoading();
+    }
   }
 
-  // Видео-режим
-  this.modalContent.classList.add('video-mode');
-  this.showLoading();
-  this.modalContent.append(this.modalVideo);
-  try {
-    await this.loadVideo(p.video);
-    await this.modalVideo.play();
-    this.modalVideo.controls = true;
-    this.modalVideo.muted = false;
-  } catch {
-    this.modalVideo.controls = true;
-  } finally {
-    this.hideLoading();
-  }
-}
-
-
-  loadVideo(src) {
-    return new Promise((res, rej) => {
-      this.modalVideo.src = src;
-      this.modalVideo.muted = true;
-      this.modalVideo.playsInline = true;
-      const onL = () => { this.modalVideo.removeEventListener('loadeddata', onL); res(); };
-      const onE = () => { this.modalVideo.removeEventListener('error', onE); rej(); };
-      this.modalVideo.addEventListener('loadeddata', onL);
-      this.modalVideo.addEventListener('error', onE);
-      this.modalVideo.load();
-    });
+  showLoading() {
+    this.loading.classList.add('active');
   }
 
-  showLoading() { this.loading.classList.add('active'); }
-  hideLoading() { this.loading.classList.remove('active'); }
+  hideLoading() {
+    this.loading.classList.remove('active');
+  }
 
   closeModal() {
     this.modal.classList.remove('open');
@@ -272,6 +323,7 @@ async openModal(item) {
     document.body.style.overflow = '';
   }
 }
+
 
 //! EmailJS форма
 class FormHandler {
@@ -388,6 +440,25 @@ window.addEventListener('DOMContentLoaded', () => {
               ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     })
   );
+
+    const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('active');
+    document.body.classList.toggle('no-scroll');
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      hamburger.classList.remove('open');
+      document.body.classList.remove('no-scroll');
+    });
+  });
+
+
 
   new CursorTrail();
 });

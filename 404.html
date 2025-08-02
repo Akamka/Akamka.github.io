@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>404 — You’re Being Watched</title>
+  <link rel="stylesheet" href="/styles/variables.css">
+  <style>
+    :root {
+      --neon-blue: #00f3ff;
+      --dark-bg: #0a0a0a;
+      --eye-white: #ffffff;
+      --eye-pupil: #00f3ff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--dark-bg);
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--neon-blue);
+      overflow: hidden;
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 5rem);
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--neon-blue), #0066ff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 2rem;
+    }
+
+    .eye {
+      width: 120px;
+      height: 120px;
+      background: var(--eye-white);
+      border-radius: 50%;
+      position: relative;
+      box-shadow: 0 0 20px rgba(0,243,255,0.2);
+      margin-bottom: 3rem;
+    }
+
+    .pupil {
+      width: 40px;
+      height: 40px;
+      background: var(--eye-pupil);
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease-out;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      border: 2px solid var(--neon-blue);
+      color: var(--neon-blue);
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: rgba(0,243,255,0.15);
+      transition: left 0.4s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:hover {
+      background: var(--neon-blue);
+      color: var(--dark-bg);
+    }
+
+    @media (max-width: 480px) {
+      .eye {
+        width: 90px;
+        height: 90px;
+      }
+
+      .pupil {
+        width: 30px;
+        height: 30px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>404 — Page Vanished</h1>
+    <div class="eye">
+      <div class="pupil" id="pupil"></div>
+    </div>
+    <p>We can’t find what you’re looking for... but it’s looking at you.</p>
+    <a href="/" class="btn">👁 Back to safety</a>
+  </div>
+
+  <script>
+    const pupil = document.getElementById('pupil');
+    document.addEventListener('mousemove', (e) => {
+      const eye = pupil.parentElement.getBoundingClientRect();
+      const centerX = eye.left + eye.width / 2;
+      const centerY = eye.top + eye.height / 2;
+      const angleX = (e.clientX - centerX) / (eye.width / 2);
+      const angleY = (e.clientY - centerY) / (eye.height / 2);
+      const maxOffset = 25;
+
+      const moveX = Math.max(Math.min(angleX * maxOffset, maxOffset), -maxOffset);
+      const moveY = Math.max(Math.min(angleY * maxOffset, maxOffset), -maxOffset);
+
+      pupil.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px))`;
+    });
+  </script>
+</body>
+</html>

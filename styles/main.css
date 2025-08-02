@@ -95,6 +95,8 @@ body {
 
 /* Текст під кільцем */
 .loader-text {
+
+
   margin-top: 1rem;
   color: var(--neon-blue);
   font-family: 'Space Grotesk', sans-serif;
@@ -104,6 +106,13 @@ body {
   opacity: 0.8;
   animation: textFade 1.5s ease-in-out infinite;
 }
+
+#loader-percent {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-left: 0.5rem;
+}
+
 
 /* Анімація заповнення кільця */
 @keyframes progress {
@@ -188,6 +197,7 @@ body {
   text-decoration: none;
 }
 .nav-links {
+  transition: right 0.3s ease;
   display: flex;
   gap: 2rem;
   list-style: none;
@@ -238,6 +248,105 @@ body {
   }
   .nav-links.active { right: 0; }
 }
+
+/* ==========================================
+   Mobile tweaks (max-width: 480px)
+   ========================================== */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 1rem 1rem;
+  }
+
+  .nav-links {
+    width: 100%;
+    padding: 4rem 1.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    margin: 0.5rem 0.5rem;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .portfolio-item {
+    max-width: 100%;
+  }
+
+  .modal-content {
+    width: 95%;
+    max-height: 90vh;
+    border-radius: 8px;
+  }
+
+  .gallery-container {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+
+  .contact-form {
+    padding: 1rem;
+  }
+
+  .footer-main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-social {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .footer-contacts .contact-item,
+  .footer-social .social-icon {
+    font-size: 0.85rem;
+  }
+}
+
+/* ==========================================
+   Ultra small screens (max-width: 360px)
+   ========================================== */
+@media (max-width: 360px) {
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+  }
+
+  .footer-heading {
+    font-size: 1rem;
+  }
+
+  .gallery-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 
 /* ==========================================
    Hero
@@ -661,4 +770,23 @@ input:valid, textarea:valid {
 .footer-legal .license-link:hover {
   text-decoration: underline;
   color: #00f3ff;
+}
+
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.hamburger.open .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger.open .bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.hamburger .bar {
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }

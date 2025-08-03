@@ -193,7 +193,7 @@ body {
 .navbar .logo {
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--neon-blue);
+  color: var(--white);
   text-decoration: none;
 }
 .nav-links {
@@ -693,7 +693,7 @@ input:valid, textarea:valid {
 .footer-brand .logo {
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--neon-blue);
+  color: var(--white);
   text-decoration: none;
   margin-bottom: 0.5rem;
 }
@@ -790,3 +790,8 @@ body.no-scroll {
 .hamburger .bar {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
+
+
+
+
+

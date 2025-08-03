@@ -325,6 +325,7 @@ class PortfolioManager {
     } finally {
       this.hideLoading();
     }
+    
   }
 
   showLoading() {

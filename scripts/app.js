@@ -376,9 +376,10 @@ class FormHandler {
       await emailjs.send('service_i45e25w','template_jt8idty', data);
       this.show(this.success);
       this.form.reset();
-    } catch {
+    } catch (error) {
+      console.error("EmailJS error:", error);
       this.show(this.error);
-    } finally {
+      } finally {
       btn.disabled = false; btn.textContent = 'Отправить';
     }
   }
